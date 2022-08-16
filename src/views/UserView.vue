@@ -11,6 +11,11 @@
     <router-link to='/use'>Error</router-link>
     <br>
     <router-link to='/user-nomatch'>User Error</router-link>
+    <br>
+    <router-link to='/user/jorge/profile'>User Profile</router-link>
+    <br>
+    <h5>Debajo ira el Route view hijo</h5>
+    <router-view></router-view>
   </div>
 </template>
 

@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
 import UserView from "../views/UserView.vue";
-import ErrorView from '../views/ErrorView.vue'
+import ErrorView from "../views/ErrorView.vue";
 import UserErrorView from "../views/UserErrorView.vue";
+import ProfileView from "../views/ProfileView.vue";
 
 Vue.use(VueRouter);
 
@@ -25,12 +26,21 @@ const routes = [
    },
 
    // pasar parametros
-   { path: "/user/:id", component: UserView },
+   {
+      path: "/user/:id",
+      component: UserView,
+      children: [
+         {
+            path: "profile", // "" cuando no hay nada, "profile" cuando esta profile
+            component: ProfileView,
+         },
+      ],
+   },
    { path: "/user/:name/post/:postId", name: "userPost", component: UserView },
 
    // error 404, no importa el orden pero lo recomiendan
-   { path: "*", component: ErrorView }, // will match everything
-   { path: "/user-*", component: UserErrorView }, // will match anything starting with `/user-`
+   { path: "*", component: ErrorView }, // hara match con todo
+   { path: "/user-*", component: UserErrorView }, // hara match con cualquier cosa que empiese con `/user-`
 ];
 
 const router = new VueRouter({
